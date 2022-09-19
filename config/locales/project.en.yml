@@ -1,0 +1,4 @@
+en:
+  create: "Project created successfully"
+  update: "Project updated successfully!"
+  destroy: "Project destroyed successfully!"

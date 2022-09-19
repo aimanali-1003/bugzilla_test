@@ -1,0 +1,31 @@
+<div style="margin-left:25%;padding:1px 16px;height:1000px;">
+  <h1>Dashboard</h1>
+   <% if user_signed_in? %>
+  <div class="row">
+  <div class="col-xl-6 mb-4">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+            <img
+              src="https://mdbootstrap.com/img/new/avatars/7.jpg"
+              alt=""
+              style="width: 45px; height: 45px; margin-right: 20px"
+              class="rounded-circle"
+            />
+            <div class="ms-3">
+              <p class="fw-bold mb-1"><%= current_user.name%></p>
+              <p class="text-muted mb-0"><%=current_user.email%></p>
+               <p class="text-muted mb-0"><%=current_user.role%></p>
+            </div>
+          </div>
+          <span class="badge rounded-pill badge-success">Active</span>
+        </div>
+      </div>
+      <div class="card-footer border-0 bg-light p-2 d-flex justify-content-around">
+      </div>
+    </div>
+  </div>
+</div>
+  <%end%>
+</div>

@@ -1,0 +1,97 @@
+ <div class="col-lg-12">
+        <div class="card mdb-color white-text p-2">
+          <div class="card-title">
+            <h4 class="">Bug Title: <%= @bug.title %></h4>
+            <li class="list-group-item"><em> Bug posted by: <%= @bug.posted_by.name %></em></li>
+            <li class="list-group-item"><em> Bug description: <%= @bug.description %></em></li>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>      
+      
+
+<div class="container">
+  <% if @bug.images.attached? %>
+      <div class="mt-3">
+        <% @bug.images.each do |image| %>
+          <img src="<%= rails_blob_path(image)%>" class="w-75 h-75">
+        <% end %>
+      </div>
+  <%end%>
+</div>
+<div class="container">
+<h3><b> Project_name: </b><%= @project.name %></h3>
+</div>
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Bug Title</th>
+      <th scope="col">Picked/Not Picked</th>
+      <th scope="col">Bug Type</th>
+      <th scope="col">Bug Status</th>
+      <th scope="col">Deadline</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+       <td><%= 1 %></td>
+       <td><%= @bug.title %></td>
+       <td><% if @bug.assigned_to_id? %>
+              <i>Picked</i>
+            <%else%>
+              <i>Not Picked</i></td>
+            <%end%>
+        <td><%if @bug.Bug? %>
+              <i>Bug</i>
+            <%elsif @bug.Feature? %>
+              <i>Feature</i>
+            <%end%>
+        </td>
+        <td><% if @bug.New? %>
+               <i> New</i>
+            <% elsif @bug.Started? %>
+               <i> Started</i>
+            <% else %>
+               <i> Resolved</i>
+            <% end %></td>
+        <td> <%= @bug.deadline.to_formatted_s(:long) %> </td>           
+        <tr></tr>        
+  </tbody>
+</table>
+<li class="list-group-item"><em> Taken:
+              <% if @bug.assigned_to_id? %>
+                <%= @bug.assigned_to.name %>
+              <% else %>
+                Not yet
+              <% end %>
+            </em></li>
+          <ul class="list-group list-group-flush">           
+            <% if (!@bug.assigned_to_id? && current_user.Developer?) %>
+              <li class="list-group-item">
+                <%= form_for pick_drop_path(@bug.project, @bug ) do |form| %>
+                  <%= form.submit "Solve Bug", class: 'btn btn-secondary white-text mdb-color darken-3' %>
+                <% end %>
+              </li>  
+            <% end %>
+            <% if @bug.assigned_to == current_user %>
+              <li class="list-group-item">
+                <%= form_tag pick_drop_path(@bug.project, @bug) do |form| %>
+                  <%= submit_tag "Unassign Bug", class: 'btn btn-secondary white-text mdb-color darken-3' %>
+                <% end %>
+              </li>
+              <li class="list-group-item">
+                <%= form_tag status_project_bug_path(@bug.project, @bug) do |form| %>
+                  <%= select_tag :status, options_for_select(Bug.statuses.reject {|key, value| (value == 2 && @bug.Bug?) or (value == 3 && @bug.Feature?) or value == Bug.statuses[@bug.status]}, Bug.statuses[@bug.status]), {class: 'form-control'} %>
+                  <%= submit_tag "Change Status", class: 'btn btn-secondary white-text mdb-color darken-3 mt-2 btn-sm' %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+<br />
+<%= link_to 'Edit', edit_project_bug_path(@project,@bug), class: "btn btn-secondary"%>
+<%= link_to 'Back', project_bugs_path, class: "btn btn-secondary" %>
+</div>
+<br />
+                    

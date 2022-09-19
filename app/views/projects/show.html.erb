@@ -1,0 +1,19 @@
+<br />
+<div class="card">
+  <div class="card-header"><strong>Project name: </strong><%= @project.name %></div>
+  <div class="card-header"><strong>Project description: </strong><%= @project.description %></div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Total Bugs: </strong><%= @project.bugs.count %></li>
+      <li class="list-group-item"><strong>Project is assigned to users: </strong><%= @project.enrolled_users.count %></li> 
+      <li class="list-group-item"><strong>Project users: <% @project.enrolled_users.each do |user| %>
+                                                            <%= user.name %>
+                                                          <% end %></li>
+    </ul>
+</div>
+<br />
+<div class="container-fluid">
+ <% if (current_user.QA?) %>
+  <%= link_to "Add bug", new_project_bug_path(@project), class:"btn btn-secondary" %>
+ <% end %>
+  <%= link_to "View all Bugs", project_bugs_path(@project), class:"btn btn-secondary" %>
+</div>

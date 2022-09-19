@@ -1,0 +1,22 @@
+<% if user_signed_in? %>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;" >
+        <a href="#" class="navbar-brand">Bugzilla</a>
+        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+            <div class="navbar-nav">
+                <a href="<%= root_path %>" class="nav-item nav-link active">Home</a>
+                <a href="<%= edit_user_registration_path %>" class="nav-item nav-link">Edit Profile</a>
+               <% if (current_user.Manager?) %>
+                <a href="<%= new_project_path %>" class="nav-item nav-link">Add Project</a>
+               <% end %>
+                <a href="<%= projects_path %>" class="nav-item nav-link">Show Project</a>
+                
+            </div>
+            <div class="navbar-nav">
+                <li class="nav-item nav-link"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+            </div>
+        </div>
+</nav>
+<%end%>

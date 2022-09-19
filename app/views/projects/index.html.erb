@@ -1,0 +1,57 @@
+<br />
+<div class="container">
+<div class="row">
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<div class="table-responsive">
+				<table class="table user-list">
+					<thead>
+						<tr>
+							<th><span>Project name</span></th>
+							<th><span>Created at</span></th>
+							<th class="text-center"><span>Created by</span></th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+          <% @projects.each do |project| %>
+						<tr>
+							<td>
+               <%= project.name %>
+							</td>
+							<td>
+								<%= project.created_at.to_date %>
+							</td>
+							<td class="text-center">
+								<span class="label label-default"><%= project.creator.name %></span>
+							</td>
+							<td style="width: 20%;">
+								<a href="<%= project_path(project) %>" class="table-link">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                    
+									</span>
+								</a>
+               <% if (current_user.Manager?) %>
+                <a href="<%= edit_project_path(project) %>" class="table-link">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+									</span>
+								</a>
+                <span class="fa-stack">
+                  <i class="fa fa-square fa-stack-2x"></i>
+                <%= link_to '', project_path(project), method: :delete, data: { confirm: 'Are you sure?'}, class:"table-link fa fa-trash-o fa-stack-1x fa-inverse" %>
+                </span>
+							 <%end%>	
+							</td>
+						</tr>
+          <%end%>						
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
