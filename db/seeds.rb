@@ -7,25 +7,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.destroy_all
+# User.destroy_all
 
-User.create!([{
-               email: 'aiman.ali100@outlook.com',
-               password: 'aimanali',
-               role: 'Manager',
-               name: 'Manager 01'
-             },
-              {
-                email: 'aiman.ali@devsinc.com',
-                password: 'aimanali',
-                role: 'Developer',
-                name: 'Developer 01'
-              },
-              {
-                email: 'qa@devsinc.com',
-                password: 'aimanali',
-                role: 'QA',
-                name: 'QA 01'
-              }])
+User.find_or_create_by(email: 'aiman.ali100@outlook.com', encrypted_password: 'aimanali', role: 'Manager',
+                       name: 'Manager 01')
+User.find_or_create_by(email: 'aiman.ali@devsinc.com', encrypted_password: 'aimanali', role: 'Developer',
+                       name: 'Developer 01')
+User.find_or_create_by(email: 'qa@devsinc.com', encrypted_password: 'aimanali', role: 'QA', name: 'qa 01')
 
 Rails.logger.debug "Created #{User.count} users"

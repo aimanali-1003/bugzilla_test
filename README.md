@@ -1,12 +1,13 @@
 # Bugzilla - test project
 
-Prerequisites
+# Prerequisites
 
 The setups steps expect following tools installed on the system.
 
     Github
     Ruby 2.7.6
     Rails 5.2.8
+# repository check
 
 1. Check out the repository
 
@@ -18,12 +19,20 @@ Copy the sample database.yml file and edit the database configuration as require
 
 cp config/database.yml.sample config/database.yml
 
+# install bundle
+
+bundle install 
+
+# Database setup
+
 3. Create and setup the database
 
 Run the following commands to create and setup the database.
 
 bundle exec rake db:create
 bundle exec rake db:setup
+
+# Start project
 
 4. Start the Rails server
 

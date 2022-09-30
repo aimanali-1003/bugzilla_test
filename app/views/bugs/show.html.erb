@@ -70,19 +70,21 @@
           <ul class="list-group list-group-flush">           
             <% if (!@bug.assigned_to_id? && current_user.Developer?) %>
               <li class="list-group-item">
-                <%= form_for pick_drop_path(@bug.project, @bug ) do |form| %>
+                <%= form_with(model: [@project, @bug], local: true)do |form| %>
+                   <%= form.hidden_field  :assigned_to_id, value: current_user.id %>
                   <%= form.submit "Solve Bug", class: 'btn btn-secondary white-text mdb-color darken-3' %>
                 <% end %>
               </li>  
             <% end %>
             <% if @bug.assigned_to == current_user %>
               <li class="list-group-item">
-                <%= form_tag pick_drop_path(@bug.project, @bug) do |form| %>
+                <%= form_with(model: [@project, @bug], local: true) do |form| %>
+                 <%= form.hidden_field :assigned_to_id, value: nil %>
                   <%= submit_tag "Unassign Bug", class: 'btn btn-secondary white-text mdb-color darken-3' %>
                 <% end %>
               </li>
               <li class="list-group-item">
-                <%= form_tag status_project_bug_path(@bug.project, @bug) do |form| %>
+                <%= form_for( [@project, @bug], :url => status_project_bug_path(@bug.project, @bug), method: :patch) do |form|%>
                   <%= select_tag :status, options_for_select(Bug.statuses.reject {|key, value| (value == 2 && @bug.Bug?) or (value == 3 && @bug.Feature?) or value == Bug.statuses[@bug.status]}, Bug.statuses[@bug.status]), {class: 'form-control'} %>
                   <%= submit_tag "Change Status", class: 'btn btn-secondary white-text mdb-color darken-3 mt-2 btn-sm' %>
                 <% end %>
