@@ -14,6 +14,8 @@ gem 'pg'
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+gem 'rack-cors'
+gem 'active_model_serializers'
 # Use Uglifier as compressor for JavaScript assets
 gem 'bootstrap', '~> 5.2'
 gem 'image_processing', '>= 1.2'
@@ -22,6 +24,7 @@ gem 'pundit'
 gem 'uglifier', '>= 1.3.0'
 # Use ActiveStorage variant
 gem 'mini_magick', '~> 4.8'
+# gem 'pry', git: 'https://github.com/pry/pry.git', ref: '272b3290b5250d28ee82a5ff65aa3b29b825e37b'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
 gem 'devise'
