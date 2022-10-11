@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
+# project-serializer
 class ProjectSerializer < ActiveModel::Serializer
-
-
-  def enrolled_users
-      object.enrolled_users
-  end
+  delegate :enrolled_users, to: :object
 
   def user_count
     object.enrolled_users.count
