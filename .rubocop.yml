@@ -15,7 +15,7 @@ AllCops:
     - 'bin/**/*'
     
 Layout/LineLength:
-  Max: 120
+  Max: 800
   
 Metrics/MethodLength:
   Max: 23
@@ -29,8 +29,3 @@ Lint/AmbiguousBlockAssociation:
   Exclude:
     - spec/**/*
 
-Style/Documentation:
-  Enabled: false
-
-Rails/FilePath:
-  Enabled: false

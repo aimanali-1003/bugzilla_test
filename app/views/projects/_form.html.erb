@@ -12,27 +12,17 @@
 
   <label for="users"><b>Developer</b></label>
         <br/>
-        <%= form.collection_check_boxes(:object_id, @devs, :id, :name_role, {selected: @project.enrolled_users.ids}, {multiple: true} ) do |assign| %>
+        <%= form.collection_check_boxes(:enrolled_user_ids, User.devs , :id, :name_role, {checked: @project.enrolled_user_ids} , {multiple: true} ) do |assign| %>
           <%= assign.label(class:"label-checkbox form-check") { assign.check_box + assign.text }%>
         <% end %>
    <label for="users"><b>QA</b></label>
         <br/>
-        <%= form.collection_check_boxes(:object_id, @qas, :id, :name_role, {selected: @project.enrolled_users.ids}, {multiple: true} ) do |assign| %>
+        <%= form.collection_check_boxes(:enrolled_user_ids, User.qas, :id, :name_role, {checked: @project.enrolled_user_ids} , {multiple: true} ) do |assign| %>
           <%= assign.label(class:"label-checkbox form-check") { assign.check_box + assign.text }%>
         <% end %>
-
-        <% unless project.enrolled_users.empty? %>
-        <% @user_in_project.each do |user|  %>
-          <%= user.name %>
-           
-          <%= link_to 'Remove', project_delete_path(@project, user),method: :patch %>
-         <%end%>
-        <% end %>
-
-
   <br />
   <div class="actions">
-    <%= form.submit "Add project", class:"btn btn-primary"%>  
+    <%= form.submit "Submit", class:"btn btn-primary"%>  
   </div>
 <% end %>
 <br />
