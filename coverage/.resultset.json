@@ -172,7 +172,7 @@
           null,
           1,
           1,
-          1,
+          0,
           null,
           null,
           1,
@@ -484,6 +484,18 @@
           null,
           null,
           1
+        ]
+      },
+      "/home/dev/bugzilla/config/initializers/cors.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          1,
+          1,
+          1,
+          null,
+          null
         ]
       },
       "/home/dev/bugzilla/config/initializers/devise.rb": {
@@ -948,11 +960,19 @@
           null,
           null,
           1,
+          1,
+          1,
+          1,
+          null,
+          null,
+          null,
+          1,
           null
         ]
       },
       "/home/dev/bugzilla/app/models/user.rb": {
         "lines": [
+          null,
           null,
           null,
           1,
@@ -978,6 +998,7 @@
         "lines": [
           null,
           null,
+          null,
           1,
           1,
           null
@@ -987,12 +1008,14 @@
         "lines": [
           null,
           null,
+          null,
           1,
           null
         ]
       },
       "/home/dev/bugzilla/app/controllers/bugs_controller.rb": {
         "lines": [
+          null,
           null,
           null,
           1,
@@ -1035,9 +1058,9 @@
           null,
           1,
           2,
-          1,
+          2,
           null,
-          1,
+          0,
           null,
           null,
           null,
@@ -1070,8 +1093,9 @@
         "lines": [
           null,
           null,
+          null,
           1,
-          1,
+          null,
           1,
           null,
           1,
@@ -1289,6 +1313,7 @@
         "lines": [
           null,
           null,
+          null,
           1,
           1,
           1,
@@ -1400,6 +1425,7 @@
         "lines": [
           null,
           null,
+          null,
           1,
           1,
           1,
@@ -1436,6 +1462,7 @@
         "lines": [
           null,
           null,
+          null,
           1,
           1,
           1,
@@ -1468,6 +1495,7 @@
       },
       "/home/dev/bugzilla/app/models/project.rb": {
         "lines": [
+          null,
           null,
           null,
           1,
@@ -1576,6 +1604,7 @@
         "lines": [
           null,
           null,
+          null,
           1,
           1,
           null,
@@ -1671,6 +1700,6 @@
         ]
       }
     },
-    "timestamp": 1664524271
+    "timestamp": 1666892564
   }
 }

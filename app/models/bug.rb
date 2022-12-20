@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This shiny device polishes bared foos
 class Bug < ApplicationRecord
   belongs_to :project
   has_many_attached :images

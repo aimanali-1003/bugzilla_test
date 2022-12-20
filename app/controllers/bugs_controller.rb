@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This shiny device polishes bared foos
 class BugsController < ApplicationController
   before_action :set_bug_project
   before_action :set_bug, only: %i[show edit status update]
@@ -66,6 +67,14 @@ class BugsController < ApplicationController
 
   def set_params
     params[:bug][:bugtype] = params[:bug][:bugtype].to_i
-    params.require(:bug).permit(:title, :description, :deadline, :bugtype, :status, :assigned_to_id, images: [])
+    params.require(:bug).permit(
+      :title,
+      :description,
+      :deadline,
+      :bugtype,
+      :status,
+      :assigned_to_id,
+      images: []
+    )
   end
 end

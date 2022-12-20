@@ -13,9 +13,9 @@ gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
-gem 'rack-cors'
 gem 'active_model_serializers'
+gem 'rack-cors'
+gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'bootstrap', '~> 5.2'
 gem 'image_processing', '>= 1.2'

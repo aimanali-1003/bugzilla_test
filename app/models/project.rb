@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# This shiny device polishes bared foos
 class Project < ApplicationRecord
   belongs_to :creator, class_name: :User
   has_many :bugs, dependent: :destroy

@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 
+# This shiny device polishes bared foos
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[show edit update destroy]
   before_action :authorize_project, except: %i[index]
 
   def index
-    @projects = if current_user.Manager?
-                  current_user.projects.all
-                else
-                  current_user.project_enrollment
-                end
+    @projects = projects
   end
 
   def show; end
@@ -55,6 +52,12 @@ class ProjectsController < ApplicationController
     else
       authorize Project
     end
+  end
+
+  def projects
+    return current_user.projects.all if current_user.Manager?
+
+    current_user.project_enrollment
   end
 
   def set_project
